@@ -3,7 +3,9 @@ from bs4 import BeautifulSoup
 import cloudscraper
 import sys
 import re
-import os
+import keyboard
+import webbrowser
+
 
 if 2 > len(sys.argv) < 4:
     print('검색어를 함께 입력해주세요.')
@@ -21,6 +23,11 @@ if sys.argv[1] == '-h':
     print('\t\t사용예시) wiki -i "검색어"')
     sys.exit()
 
+
+def pause():
+    print('계속하려면 <Enter>키를 누르십시오 . . .')
+    keyboard.wait('Enter')
+    
 
 def print_heading(text):
     regex = re.compile('[ㄱ-ㅎ가-힣]')
@@ -72,7 +79,12 @@ if __name__ == '__main__':
                     index += 1
                 
                 print_menu()
-                choice_menu = input('>> ')
+
+                try:
+                    choice_menu = input('>> ')
+                except KeyboardInterrupt as e:
+                    print('나가기\n')
+                    sys.exit()
                 print()
 
                 if choice_menu in heading_nums:
@@ -86,11 +98,12 @@ if __name__ == '__main__':
                             print(content.text)
                         
                     print()
-                    os.system('pause')
+                    pause()
                 if choice_menu.lower() == 'o':
-                    print( url + '으로 이동합니다.')
-                    os.system('start ' + url)
-
+                    print( '\"' + url + '\"' + '으로 이동합니다.')                    
+                    webbrowser.open(url)
+                    pause()
+                    
                 if choice_menu.lower() == 'e':
                     sys.exit()
 
