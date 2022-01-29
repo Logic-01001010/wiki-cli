@@ -82,8 +82,9 @@ if __name__ == '__main__':
                     if len(contents[index].text) <= 0:
                         print('<비어있음>')
                     else:
-                        print(contents[index].text)
-                
+                        for content in contents[index]:
+                            print(content.text)
+                        
                     print()
                     os.system('pause')
                 if choice_menu.lower() == 'o':
@@ -101,7 +102,8 @@ if __name__ == '__main__':
                 if len(contents[index].text) <= 0:
                     print('<비어있음>')
                 else:
-                    print(contents[index].text)
+                    for content in contents[index]:
+                        print(content.text)
 
                 index += 1
                 print()
