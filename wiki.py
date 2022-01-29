@@ -25,9 +25,12 @@ if sys.argv[1] == '-h':
 
 
 def pause():
-    print('계속하려면 <Enter>키를 누르십시오 . . .')
-    keyboard.wait('Enter')
-    
+    try:
+        print('계속하려면 <Enter>키를 누르십시오 . . .')
+        keyboard.wait('Enter')
+    except KeyboardInterrupt as e:
+        print('나가기\n')
+        sys.exit()    
 
 def print_heading(text):
     regex = re.compile('[ㄱ-ㅎ가-힣]')
