@@ -1,5 +1,13 @@
 # wiki-cli
 
+## 권장
+- 윈도우 환경
+
+## 모듈설치
+```
+pip install -r requirements.txt
+```
+
 ## 사용방법
 ```
 python wiki.py "검색어" // 일반
